@@ -1,0 +1,179 @@
+:root {
+  --admin-bg: #f5f6f8;
+  --admin-border: #e2e5e9;
+  --admin-text: #1c2226;
+  --admin-muted: #6b7580;
+  --admin-primary: #1f6f78;
+  --admin-danger: #b03a2e;
+}
+.admin-shell {
+  min-height: 100vh;
+  background: var(--admin-bg);
+  font-family: "Be Vietnam Pro", system-ui, sans-serif;
+  color: var(--admin-text);
+}
+.admin-topbar {
+  background: #0b1f2a;
+  color: #fff;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.admin-topbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.admin-topbar button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.admin-layout {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.admin-nav {
+  width: 200px;
+  flex-shrink: 0;
+  padding: 24px 12px;
+}
+.admin-nav a {
+  display: block;
+  padding: 10px 12px;
+  color: var(--admin-text);
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-bottom: 2px;
+}
+.admin-nav a:hover,
+.admin-nav a.active {
+  background: #fff;
+  font-weight: 600;
+}
+.admin-main {
+  flex: 1;
+  padding: 24px;
+}
+.admin-card {
+  background: #fff;
+  border: 1px solid var(--admin-border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.admin-h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.admin-sub {
+  color: var(--admin-muted);
+  font-size: 13.5px;
+  margin-bottom: 20px;
+}
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.admin-table th {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--admin-border);
+  color: var(--admin-muted);
+  font-weight: 600;
+}
+.admin-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--admin-border);
+  vertical-align: top;
+}
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+.admin-btn {
+  background: var(--admin-primary);
+  color: #fff;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.admin-btn.danger {
+  background: var(--admin-danger);
+}
+.admin-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--admin-border);
+  color: var(--admin-text);
+}
+.admin-field {
+  margin-bottom: 14px;
+}
+.admin-field label {
+  display: block;
+  font-size: 13px;
+  color: var(--admin-muted);
+  margin-bottom: 5px;
+}
+.admin-field input,
+.admin-field textarea,
+.admin-field select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 14px;
+}
+.admin-field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.admin-error {
+  background: #fdecea;
+  color: var(--admin-danger);
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  margin-bottom: 14px;
+}
+.admin-success {
+  background: #e8f4ef;
+  color: #1f6f78;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 13.5px;
+  margin-bottom: 14px;
+}
+.admin-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.admin-badge.route {
+  background: #e6f0f5;
+  color: #1f6f78;
+}
+.admin-badge.service {
+  background: #fbeee9;
+  color: #b03a2e;
+}
+.admin-badge.static {
+  background: #eee;
+  color: #555;
+}

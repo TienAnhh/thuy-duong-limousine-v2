@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  role         String   @default("admin") // "admin" | "editor"
+  createdAt    DateTime @default(now())
+}
+
+// Trang nội dung: trang chủ, trang tuyến đường, trang dịch vụ.
+// "type" phân biệt loại trang để hiển thị đúng layout.
+model Page {
+  id              String   @id @default(cuid())
+  slug            String   @unique // vd: "home", "tuyen-hai-phong-mong-cai"
+  type            String   // "static" | "route" | "service"
+  navLabel        String   // tên hiện trong menu/danh sách admin
+  h1              String
+  metaTitle       String?
+  metaDescription String?
+  keywords        String?
+  bannerUrl       String?
+  priceFrom       String?  // vd: "300.000đ" - chỉ dùng cho type route/service
+  duration        String?  // vd: "~2h30" - chỉ dùng cho type route
+  bodyHtml        String?  @db.Text
+  published       Boolean  @default(true)
+  sortOrder       Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model NewsPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  contentHtml String?  @db.Text
+  coverImage  String?
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  route     String?
+  note      String?
+  createdAt DateTime @default(now())
+}
