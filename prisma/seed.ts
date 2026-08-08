@@ -13,7 +13,8 @@ async function main() {
       data: {
         username: adminUsername,
         passwordHash: await hashPassword(adminPassword),
-        role: "admin",
+        role: "superadmin",
+        active: true,
       },
     });
     console.log(`Đã tạo admin: ${adminUsername} / ${adminPassword} (đổi mật khẩu sau khi đăng nhập lần đầu)`);

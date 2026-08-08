@@ -22,6 +22,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Sai tài khoản hoặc mật khẩu" }, { status: 401 });
   }
 
+  if (!admin.active) {
+    return NextResponse.json({ error: "Tài khoản này đã bị khóa. Liên hệ quản trị viên." }, { status: 403 });
+  }
+
   const token = await signSession({ sub: admin.id, username: admin.username, role: admin.role });
 
   const res = NextResponse.json({ ok: true });

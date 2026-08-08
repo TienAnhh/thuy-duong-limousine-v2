@@ -75,11 +75,11 @@ export default function SiteHeader({ servicePages }: { servicePages: NavPage[] }
                     {p.navLabel}
                   </a>
                 ))}
-                <a href="/tin-tuc" onClick={closeMenus}>
-                  Tin tức
-                </a>
               </div>
             </div>
+            <a href="/tin-tuc" onClick={closeMenus}>
+              Tin tức
+            </a>
             <a href="/#lien-he" onClick={closeMenus}>
               Liên hệ
             </a>

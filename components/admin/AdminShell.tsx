@@ -1,17 +1,24 @@
 import LogoutButton from "./LogoutButton";
+import { getSession } from "@/lib/session";
 
-export default function AdminShell({
+export default async function AdminShell({
   active,
   children,
 }: {
-  active: "dashboard" | "pages" | "news" | "contacts";
+  active: "dashboard" | "pages" | "news" | "contacts" | "accounts";
   children: React.ReactNode;
 }) {
+  const session = await getSession();
+  const isSuperAdmin = session?.role === "superadmin";
+
   return (
     <>
       <div className="admin-topbar">
         <a href="/admin">Thùy Dương Limousine — Quản trị</a>
-        <LogoutButton />
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <span style={{ fontSize: 13, opacity: 0.85 }}>{session?.username}</span>
+          <LogoutButton />
+        </div>
       </div>
       <div className="admin-layout">
         <nav className="admin-nav">
@@ -27,6 +34,11 @@ export default function AdminShell({
           <a href="/admin/contacts" className={active === "contacts" ? "active" : ""}>
             Đăng ký / liên hệ
           </a>
+          {isSuperAdmin && (
+            <a href="/admin/accounts" className={active === "accounts" ? "active" : ""}>
+              Tài khoản quản trị
+            </a>
+          )}
           <a href="/" target="_blank" rel="noreferrer" style={{ marginTop: 16, color: "var(--admin-muted)" }}>
             ↗ Xem trang web
           </a>

@@ -11,7 +11,8 @@ model Admin {
   id           String   @id @default(cuid())
   username     String   @unique
   passwordHash String
-  role         String   @default("admin") // "admin" | "editor"
+  role         String   @default("admin") // "superadmin" | "admin"
+  active       Boolean  @default(true) // false = đã bị khóa, không đăng nhập được
   createdAt    DateTime @default(now())
 }
 
