@@ -10,10 +10,11 @@ export default async function AdminAccountsPage() {
   const session = await requireSuperAdmin();
   if (!session) redirect("/admin");
 
-  const accounts = await prisma.admin.findMany({
+  const accountsRaw = await prisma.admin.findMany({
     select: { id: true, username: true, role: true, active: true, createdAt: true },
     orderBy: { createdAt: "asc" },
   });
+  const accounts = accountsRaw.map((a) => ({ ...a, createdAt: a.createdAt.toISOString() }));
 
   return (
     <AdminShell active="accounts">
