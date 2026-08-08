@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(_req: NextRequest, { params }: { params: { id: string } }) {
   const post = await prisma.newsPost.findUnique({ where: { id: params.id } });
   if (!post) return NextResponse.json({ error: "Không tìm thấy bài viết" }, { status: 404 });

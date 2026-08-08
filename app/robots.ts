@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
 
+export const dynamic = "force-dynamic";
+
 const DOMAIN = process.env.SITE_URL || "https://www.duongthuylimousine.top";
 
 export default function robots(): MetadataRoute.Robots {

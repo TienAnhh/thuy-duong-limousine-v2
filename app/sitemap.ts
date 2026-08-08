@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 const DOMAIN = process.env.SITE_URL || "https://www.duongthuylimousine.top";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
