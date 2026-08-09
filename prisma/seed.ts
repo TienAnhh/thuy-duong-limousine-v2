@@ -92,6 +92,30 @@ async function main() {
     });
   }
   console.log(`Đã seed ${pages.length} trang mặc định.`);
+
+  const priceRows = [
+    { route: "Hải Phòng – Vân Đồn", price: "250.000đ", duration: "~1h30", note: "1 khách trả đầu cao tốc, từ 2 khách hỗ trợ trả tận nơi", sortOrder: 1 },
+    { route: "Hải Phòng – Tiên Yên, Đầm Hà", price: "250.000 – 300.000đ", duration: "~2h00", note: "300k khi trả tận nơi tại Đầm Hà", sortOrder: 2 },
+    { route: "Hải Phòng – Hải Hà, Móng Cái", price: "300.000đ", duration: "~2h30", note: "Đón trả trung tâm", sortOrder: 3 },
+    { route: "Móng Cái – Sân bay Cát Bi", price: "300.000đ", duration: "~1h00", note: "Đón trả tận sảnh", sortOrder: 4 },
+    { route: "Hải Phòng – Hạ Long (Hòn Gai, Bãi Cháy)", price: "170.000 – 200.000đ", duration: "~1h15", note: "Đón trả trung tâm", sortOrder: 5 },
+    { route: "Hải Phòng – Móng Cái (Trà Cổ, Bình Ngọc)", price: "350.000đ", duration: "~3h00", note: "Đón trả tận nơi", sortOrder: 6 },
+    { route: "Móng Cái – Trung tâm Hải Phòng", price: "300.000đ", duration: "~2h30", note: "Đón trả tận nơi", sortOrder: 7 },
+    { route: "Móng Cái – Đồ Sơn", price: "350.000 – 400.000đ", duration: "~3h00", note: "400k/khách lẻ, 350k/người từ 2 khách", sortOrder: 8 },
+    { route: "Móng Cái – Thủy Nguyên", price: "350.000đ", duration: "~2h30–3h", note: "Đón trả tận nơi", sortOrder: 9 },
+    { route: "Móng Cái – KCN Tràng Duệ", price: "350.000 – 400.000đ", duration: "~3h00", note: "400k/khách lẻ, 350k/người từ 2 khách", sortOrder: 10 },
+    { route: "Hạ Long (Hà Tu) – Trung tâm Móng Cái", price: "300.000đ", duration: "~2h00", note: "Chạy cao tốc", sortOrder: 11 },
+    { route: "Trung tâm Hạ Long – Trung tâm Móng Cái", price: "250.000đ", duration: "~2h00", note: "Chạy cao tốc", sortOrder: 12 },
+    { route: "Trung tâm Hạ Long – Trà Cổ, Bình Ngọc", price: "300.000đ", duration: "~2h15", note: "Đón trả tận nơi", sortOrder: 13 },
+  ];
+
+  const existingPriceCount = await prisma.priceRow.count();
+  if (existingPriceCount === 0) {
+    await prisma.priceRow.createMany({ data: priceRows });
+    console.log(`Đã seed ${priceRows.length} dòng bảng giá.`);
+  } else {
+    console.log("Bảng giá đã có dữ liệu, bỏ qua.");
+  }
 }
 
 main()

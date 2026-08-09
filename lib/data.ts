@@ -16,6 +16,10 @@ export async function getPageBySlug(slug: string) {
   });
 }
 
+export async function getPriceRows() {
+  return prisma.priceRow.findMany({ orderBy: { sortOrder: "asc" } });
+}
+
 export async function getPublishedNews() {
   return prisma.newsPost.findMany({
     where: { published: true },

@@ -6,7 +6,7 @@ export default async function AdminShell({
   active,
   children,
 }: {
-  active: "dashboard" | "pages" | "news" | "contacts" | "accounts";
+  active: "dashboard" | "pages" | "prices" | "news" | "contacts" | "accounts";
   children: React.ReactNode;
 }) {
   const session = await getSession();
@@ -48,6 +48,9 @@ export default async function AdminShell({
           </a>
           <a href="/admin/pages" className={active === "pages" ? "active" : ""}>
             Trang nội dung
+          </a>
+          <a href="/admin/prices" className={active === "prices" ? "active" : ""}>
+            Bảng giá
           </a>
           <a href="/admin/news" className={active === "news" ? "active" : ""}>
             Tin tức

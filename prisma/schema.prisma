@@ -49,6 +49,18 @@ model NewsPost {
   updatedAt   DateTime @updatedAt
 }
 
+// Bảng giá chi tiết - độc lập với Page, cho phép nhiều dòng giá theo từng chặng nhỏ
+model PriceRow {
+  id        String   @id @default(cuid())
+  route     String   // vd: "Hải Phòng – Vân Đồn"
+  price     String   // vd: "250.000đ" hoặc "250.000 – 300.000đ"
+  duration  String?  // vd: "~1h30"
+  note      String?  // vd: "Đón trả trung tâm"
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model ContactSubmission {
   id        String   @id @default(cuid())
   name      String

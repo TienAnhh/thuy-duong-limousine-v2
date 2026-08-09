@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { prisma } from "@/lib/prisma";
-import { getNavPages, getPageBySlug } from "@/lib/data";
+import { getNavPages, getPageBySlug, getPriceRows } from "@/lib/data";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PreviewBanner from "@/components/PreviewBanner";
@@ -17,16 +17,19 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+function pickRandom<T>(arr: T[], count: number): T[] {
+  const shuffled = [...arr].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
+}
+
 export default async function HomePage() {
-  const [home, navPages] = await Promise.all([getPageBySlug("home"), getNavPages()]);
-  const routePages = await prisma.page.findMany({
-    where: { published: true, type: "route" },
-    orderBy: { sortOrder: "asc" },
-  });
+  const [home, navPages, priceRows] = await Promise.all([getPageBySlug("home"), getNavPages(), getPriceRows()]);
   const servicePages = await prisma.page.findMany({
     where: { published: true, type: "service" },
     orderBy: { sortOrder: "asc" },
   });
+  const featuredRoutes = pickRandom(priceRows, 6);
+  const routeCountLabel = new Set(priceRows.map((r) => r.route)).size;
 
   const h1 = home?.h1 || "Thùy Dương Limousine";
   const lede =
@@ -76,7 +79,7 @@ export default async function HomePage() {
                 <div className="l">Tần suất mỗi chuyến</div>
               </div>
               <div className="fig">
-                <div className="n num">{routePages.length}+</div>
+                <div className="n num">{routeCountLabel}+</div>
                 <div className="l">Tuyến đang khai thác</div>
               </div>
               <div className="fig">
@@ -109,16 +112,14 @@ export default async function HomePage() {
             <p>Xe xuất bến liên tục từ 4h30 đến 19h, trung bình một tiếng một chuyến.</p>
           </div>
           <div className="route-grid">
-            {routePages.map((r) => (
-              <div className="route-card" key={r.slug}>
+            {featuredRoutes.map((r) => (
+              <div className="route-card" key={r.id}>
                 <div className="rc-top">
-                  <h4>{r.navLabel}</h4>
-                  {r.priceFrom && (
-                    <div className="price">
-                      {r.priceFrom}
-                      <small>/khách</small>
-                    </div>
-                  )}
+                  <h4>{r.route}</h4>
+                  <div className="price">
+                    {r.price}
+                    <small>/khách</small>
+                  </div>
                 </div>
                 {r.duration && (
                   <div className="rc-meta">
@@ -127,8 +128,8 @@ export default async function HomePage() {
                     </span>
                   </div>
                 )}
-                <a className="rc-link" href={`/${r.slug}`}>
-                  Xem lịch trình chi tiết →
+                <a className="rc-link" href="tel:0912415045">
+                  ☎ Gọi đặt vé ngay →
                 </a>
               </div>
             ))}
@@ -154,14 +155,14 @@ export default async function HomePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {routePages.map((r) => (
-                    <tr key={r.slug}>
-                      <td className="route">{r.navLabel}</td>
+                  {priceRows.map((r) => (
+                    <tr key={r.id}>
+                      <td className="route">{r.route}</td>
                       <td className="price num" data-label="Giá vé">
-                        {r.priceFrom || "Liên hệ"}
+                        {r.price}
                       </td>
                       <td className="note" data-label="Ghi chú">
-                        {r.duration ? `Thời gian ${r.duration}` : "Đón trả theo yêu cầu"}
+                        {r.note || (r.duration ? `Thời gian ${r.duration}` : "Đón trả theo yêu cầu")}
                       </td>
                     </tr>
                   ))}
