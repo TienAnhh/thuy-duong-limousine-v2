@@ -27,7 +27,12 @@ export default async function DynamicPage({ params }: { params: { slug: string }
       <PreviewBanner />
       <SiteHeader servicePages={navPages} />
 
-      <section className="page-hero">
+      <section className={`page-hero${page.bannerUrl ? " has-banner" : ""}`}>
+        {page.bannerUrl && (
+          <div className="page-hero-bg">
+            <img src={page.bannerUrl} alt={page.h1} />
+          </div>
+        )}
         <div className="wrap">
           <div className="breadcrumb">
             <a href="/">Trang chủ</a> <span>/</span> <span>{page.navLabel}</span>
