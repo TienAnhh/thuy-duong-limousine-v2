@@ -79,7 +79,11 @@ nav.main > a.active{color:var(--gold-light);}
 
 /* Page (sub-page) hero - smaller, with breadcrumb */
 .page-hero{position:relative;color:#fff;background:linear-gradient(160deg,var(--navy) 0%, var(--navy-deep) 100%);overflow:hidden;}
-.page-hero::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(201,162,39,0.18), transparent 70%);}
+.page-hero.has-banner{background:var(--navy-deep);}
+.page-hero-bg{position:absolute;inset:0;z-index:0;}
+.page-hero-bg img{width:100%;height:100%;object-fit:cover;}
+.page-hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(7,22,32,0.75) 0%, rgba(7,22,32,0.55) 40%, rgba(7,22,32,0.92) 100%);}
+.page-hero::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(201,162,39,0.18), transparent 70%);z-index:1;}
 .page-hero .wrap{position:relative;z-index:2;padding:56px 28px 48px;}
 .breadcrumb{font-size:12.5px;color:#9fb3b8;display:flex;gap:8px;align-items:center;margin-bottom:18px;font-family:'Space Grotesk',monospace;}
 .breadcrumb a:hover{color:var(--gold-light);}
