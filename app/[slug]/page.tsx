@@ -22,6 +22,8 @@ export default async function DynamicPage({ params }: { params: { slug: string }
 
   if (!page) notFound();
 
+  const relatedPages = navPages.filter((p) => p.slug !== page.slug);
+
   return (
     <>
       <PreviewBanner />
@@ -75,6 +77,9 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                   </li>
                 )}
                 <li>
+                  <b>Tần suất:</b> 1 tiếng/chuyến
+                </li>
+                <li>
                   <b>Giờ chạy:</b> 4h30 – 19h00
                 </li>
                 <li>
@@ -85,6 +90,19 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                 ☎ Gọi đặt vé ngay
               </a>
             </div>
+
+            {relatedPages.length > 0 && (
+              <div className="side-card">
+                <h4>Tuyến khác</h4>
+                <div className="related-list">
+                  {relatedPages.map((p) => (
+                    <a key={p.slug} href={`/${p.slug}`}>
+                      {p.navLabel}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
           </aside>
         </div>
       </section>
