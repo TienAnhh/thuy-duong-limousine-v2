@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getNavPages, getPageBySlug } from "@/lib/data";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
 
 export const dynamic = "force-dynamic";
@@ -23,6 +24,7 @@ export default async function DynamicPage({ params }: { params: { slug: string }
 
   return (
     <>
+      <PreviewBanner />
       <SiteHeader servicePages={navPages} />
 
       <section className="page-hero">

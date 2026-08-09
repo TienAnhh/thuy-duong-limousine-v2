@@ -185,6 +185,16 @@ export default function PageForm({
         <button className="admin-btn" type="submit" disabled={loading}>
           {loading ? "Đang lưu..." : "Lưu thay đổi"}
         </button>
+        {mode === "edit" && (
+          <a
+            className="admin-btn ghost"
+            href={`/api/admin/preview?path=${encodeURIComponent(form.slug === "home" ? "/" : `/${form.slug}`)}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            👁 Xem trước
+          </a>
+        )}
         {mode === "edit" && form.slug !== "home" && (
           <button type="button" className="admin-btn danger" onClick={handleDelete}>
             Xóa trang

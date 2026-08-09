@@ -1,3 +1,4 @@
+import { draftMode } from "next/headers";
 import { prisma } from "./prisma";
 
 export async function getNavPages() {
@@ -9,7 +10,10 @@ export async function getNavPages() {
 }
 
 export async function getPageBySlug(slug: string) {
-  return prisma.page.findUnique({ where: { slug, published: true } });
+  const { isEnabled } = draftMode();
+  return prisma.page.findUnique({
+    where: isEnabled ? { slug } : { slug, published: true },
+  });
 }
 
 export async function getPublishedNews() {
@@ -20,5 +24,8 @@ export async function getPublishedNews() {
 }
 
 export async function getNewsBySlug(slug: string) {
-  return prisma.newsPost.findUnique({ where: { slug, published: true } });
+  const { isEnabled } = draftMode();
+  return prisma.newsPost.findUnique({
+    where: isEnabled ? { slug } : { slug, published: true },
+  });
 }

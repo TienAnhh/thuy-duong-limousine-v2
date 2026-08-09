@@ -131,6 +131,16 @@ export default function NewsForm({
           {loading ? "Đang lưu..." : "Lưu thay đổi"}
         </button>
         {mode === "edit" && (
+          <a
+            className="admin-btn ghost"
+            href={`/api/admin/preview?path=${encodeURIComponent(`/tin-tuc/${form.slug}`)}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            👁 Xem trước
+          </a>
+        )}
+        {mode === "edit" && (
           <button type="button" className="admin-btn danger" onClick={handleDelete}>
             Xóa bài viết
           </button>

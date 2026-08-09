@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getNavPages, getNewsBySlug } from "@/lib/data";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
 
 export const dynamic = "force-dynamic";
@@ -19,6 +20,7 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
 
   return (
     <>
+      <PreviewBanner />
       <SiteHeader servicePages={navPages} />
 
       <section className="page-hero">

@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { getNavPages, getPageBySlug } from "@/lib/data";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
 import ContactForm from "@/components/ContactForm";
 
@@ -35,6 +36,7 @@ export default async function HomePage() {
 
   return (
     <>
+      <PreviewBanner />
       <SiteHeader servicePages={navPages} />
 
       <section className="hero">
