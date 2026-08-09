@@ -248,3 +248,40 @@
   color: var(--admin-primary);
   text-decoration: underline;
 }
+.rte-sep {
+  width: 1px;
+  background: var(--admin-border);
+  margin: 2px 4px;
+}
+.rte-size-label {
+  font-size: 12px;
+  color: var(--admin-muted);
+  min-width: 34px;
+  text-align: center;
+  align-self: center;
+}
+.rte-btn.danger {
+  color: var(--admin-danger);
+  border-color: #f3c9c4;
+}
+.rte-content .ProseMirror table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0;
+  overflow: hidden;
+}
+.rte-content .ProseMirror table td,
+.rte-content .ProseMirror table th {
+  border: 1px solid var(--admin-border);
+  padding: 6px 10px;
+  vertical-align: top;
+  position: relative;
+}
+.rte-content .ProseMirror table th {
+  background: #f5f6f8;
+  font-weight: 600;
+  text-align: left;
+}
+.rte-content .ProseMirror table .selectedCell {
+  background: rgba(31, 111, 120, 0.12);
+}

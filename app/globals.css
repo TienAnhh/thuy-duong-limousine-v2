@@ -176,7 +176,14 @@ table.pricing td.note{color:#7c858b;font-size:13px;}
 .article-body li{margin-bottom:6px;}
 .article-body img{max-width:100%;height:auto;border-radius:8px;margin:18px 0;display:block;}
 .article-body a{color:var(--teal);text-decoration:underline;}
+.article-body table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14.5px;}
+.article-body table td,.article-body table th{border:1px solid var(--line);padding:10px 14px;text-align:left;}
+.article-body table th{background:var(--navy);color:#f0d98c;font-weight:600;font-size:12.5px;text-transform:uppercase;letter-spacing:0.04em;}
+.article-body table td{color:#455158;}
 .about-copy img{max-width:100%;height:auto;border-radius:8px;margin:14px 0;display:block;}
+.about-copy table{border-collapse:collapse;width:100%;margin:18px 0;font-size:14.5px;}
+.about-copy table td,.about-copy table th{border:1px solid var(--line);padding:10px 14px;text-align:left;}
+.about-copy table th{background:var(--navy);color:#f0d98c;font-weight:600;font-size:12.5px;text-transform:uppercase;}
 .faq-item{border-top:1px solid var(--line);padding:18px 0;}
 .faq-item:first-child{border-top:none;}
 .faq-item h3{font-size:15.5px;color:var(--navy);margin-bottom:6px;}
