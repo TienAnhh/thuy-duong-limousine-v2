@@ -14,6 +14,7 @@ export type PageFormData = {
   metaDescription: string;
   keywords: string;
   bannerUrl: string;
+  icon: string;
   priceFrom: string;
   duration: string;
   bodyHtml: string;
@@ -30,6 +31,7 @@ const emptyForm: PageFormData = {
   metaDescription: "",
   keywords: "",
   bannerUrl: "",
+  icon: "",
   priceFrom: "",
   duration: "",
   bodyHtml: "",
@@ -148,6 +150,11 @@ export default function PageForm({
       <div className="admin-field">
         <label>URL ảnh banner</label>
         <ImageUploadField value={form.bannerUrl} onChange={(url) => update("bannerUrl", url)} />
+      </div>
+
+      <div className="admin-field">
+        <label>Icon hiển thị (emoji, vd: 🚐 ✈️ 🏷️ 📦)</label>
+        <input value={form.icon} onChange={(e) => update("icon", e.target.value)} placeholder="🚐" style={{ maxWidth: 120 }} />
       </div>
 
       <div className="admin-field">

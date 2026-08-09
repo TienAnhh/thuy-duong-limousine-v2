@@ -28,6 +28,7 @@ model Page {
   metaDescription String?
   keywords        String?
   bannerUrl       String?
+  icon            String?  // emoji hiển thị trong vòng tròn, vd: 🚐
   priceFrom       String?  // vd: "300.000đ" - chỉ dùng cho type route/service
   duration        String?  // vd: "~2h30" - chỉ dùng cho type route
   bodyHtml        String?  @db.Text

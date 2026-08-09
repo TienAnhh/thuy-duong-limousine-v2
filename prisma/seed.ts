@@ -47,6 +47,7 @@ async function main() {
       duration: "~2h30 - 3h00",
       bodyHtml: "<p>Tuyến chủ lực, kết nối trung tâm Hải Phòng với thành phố biên giới Móng Cái.</p>",
       sortOrder: 1,
+      icon: "🚐",
     },
     {
       slug: "dich-vu-dua-don-san-bay",
@@ -59,6 +60,7 @@ async function main() {
       priceFrom: "300.000đ",
       bodyHtml: "<p>Thùy Dương Limousine bố trí xe đón khách tận sảnh sân bay Cát Bi.</p>",
       sortOrder: 2,
+      icon: "✈️",
     },
     {
       slug: "dich-vu-thue-xe-limousine",
@@ -70,6 +72,7 @@ async function main() {
       keywords: "thuê xe limousine theo đoàn",
       bodyHtml: "<p>Cho thuê nguyên xe Limousine theo chuyến hoặc theo ngày, lịch trình chủ động.</p>",
       sortOrder: 3,
+      icon: "🏷️",
     },
     {
       slug: "dich-vu-gui-hang",
@@ -81,6 +84,7 @@ async function main() {
       keywords: "gửi hàng hải phòng móng cái",
       bodyHtml: "<p>Tận dụng lịch xe chạy liên tục để giao hàng nhanh trong ngày.</p>",
       sortOrder: 4,
+      icon: "📦",
     },
   ];
 

@@ -24,6 +24,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       metaDescription: data.metaDescription ?? page.metaDescription,
       keywords: data.keywords ?? page.keywords,
       bannerUrl: data.bannerUrl ?? page.bannerUrl,
+      icon: data.icon ?? page.icon,
       priceFrom: data.priceFrom ?? page.priceFrom,
       duration: data.duration ?? page.duration,
       bodyHtml: data.bodyHtml ?? page.bodyHtml,

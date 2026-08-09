@@ -38,6 +38,7 @@ export async function POST(req: NextRequest) {
       metaDescription: data.metaDescription || null,
       keywords: data.keywords || null,
       bannerUrl: data.bannerUrl || null,
+      icon: data.icon || null,
       priceFrom: data.priceFrom || null,
       duration: data.duration || null,
       bodyHtml: data.bodyHtml || null,

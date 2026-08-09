@@ -25,7 +25,7 @@ function pickRandom<T>(arr: T[], count: number): T[] {
 export default async function HomePage() {
   const [home, navPages, priceRows] = await Promise.all([getPageBySlug("home"), getNavPages(), getPriceRows()]);
   const servicePages = await prisma.page.findMany({
-    where: { published: true, type: "service" },
+    where: { published: true, type: { in: ["route", "service"] } },
     orderBy: { sortOrder: "asc" },
   });
   const featuredRoutes = pickRandom(priceRows, 6);
@@ -256,6 +256,7 @@ export default async function HomePage() {
           <div className="service-grid">
             {servicePages.map((s) => (
               <div className="service-card" key={s.slug}>
+                {s.icon && <div className="icon">{s.icon}</div>}
                 <h4>{s.navLabel}</h4>
                 <p>{s.metaDescription || s.h1}</p>
                 <a className="link" href={`/${s.slug}`}>
