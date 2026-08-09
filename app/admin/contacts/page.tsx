@@ -1,9 +1,14 @@
+import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
+import { requireSuperAdmin } from "@/lib/session";
 import AdminShell from "@/components/admin/AdminShell";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminContactsList() {
+  const session = await requireSuperAdmin();
+  if (!session) redirect("/admin");
+
   const contacts = await prisma.contactSubmission.findMany({ orderBy: { createdAt: "desc" } });
 
   return (

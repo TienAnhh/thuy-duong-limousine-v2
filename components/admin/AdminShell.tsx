@@ -52,9 +52,11 @@ export default async function AdminShell({
           <a href="/admin/news" className={active === "news" ? "active" : ""}>
             Tin tức
           </a>
-          <a href="/admin/contacts" className={active === "contacts" ? "active" : ""}>
-            Đăng ký / liên hệ
-          </a>
+          {isSuperAdmin && (
+            <a href="/admin/contacts" className={active === "contacts" ? "active" : ""}>
+              Đăng ký / liên hệ
+            </a>
+          )}
           {isSuperAdmin && (
             <a href="/admin/accounts" className={active === "accounts" ? "active" : ""}>
               Tài khoản quản trị
