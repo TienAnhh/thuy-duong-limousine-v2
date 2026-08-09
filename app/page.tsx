@@ -58,6 +58,35 @@ export default async function HomePage() {
               Xem bảng giá
             </a>
           </div>
+          <div className="routeline">
+            <div className="routeline-track">
+              <div className="stop major">
+                <div className="dot"></div>
+                <div className="city">Hải Phòng</div>
+                <div className="meta">Điểm xuất phát</div>
+              </div>
+              <div className="stop">
+                <div className="dot"></div>
+                <div className="city">Hạ Long</div>
+                <div className="meta">~1h15</div>
+              </div>
+              <div className="stop">
+                <div className="dot"></div>
+                <div className="city">Vân Đồn</div>
+                <div className="meta">~1h30</div>
+              </div>
+              <div className="stop">
+                <div className="dot"></div>
+                <div className="city">Tiên Yên</div>
+                <div className="meta">~2h00</div>
+              </div>
+              <div className="stop major">
+                <div className="dot"></div>
+                <div className="city">Móng Cái</div>
+                <div className="meta">~2h30 · điểm cuối</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
