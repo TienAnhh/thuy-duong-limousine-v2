@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageUploadField from "./ImageUploadField";
+import RichTextEditor from "./RichTextEditor";
 
 export type PageFormData = {
   slug: string;
@@ -145,7 +147,7 @@ export default function PageForm({
 
       <div className="admin-field">
         <label>URL ảnh banner</label>
-        <input value={form.bannerUrl} onChange={(e) => update("bannerUrl", e.target.value)} placeholder="/images/..." />
+        <ImageUploadField value={form.bannerUrl} onChange={(url) => update("bannerUrl", url)} />
       </div>
 
       <div className="admin-field">
@@ -164,8 +166,8 @@ export default function PageForm({
       </div>
 
       <div className="admin-field">
-        <label>Nội dung mô tả (hỗ trợ HTML cơ bản: &lt;p&gt;, &lt;b&gt;, &lt;ul&gt;&lt;li&gt;...)</label>
-        <textarea value={form.bodyHtml} onChange={(e) => update("bodyHtml", e.target.value)} style={{ minHeight: 160 }} />
+        <label>Nội dung mô tả</label>
+        <RichTextEditor value={form.bodyHtml} onChange={(html) => update("bodyHtml", html)} />
       </div>
 
       <div className="admin-field" style={{ display: "flex", alignItems: "center", gap: 8 }}>

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import ImageUploadField from "./ImageUploadField";
+import RichTextEditor from "./RichTextEditor";
 
 export type NewsFormData = {
   slug: string;
@@ -100,7 +102,7 @@ export default function NewsForm({
 
       <div className="admin-field">
         <label>Ảnh bìa (URL)</label>
-        <input value={form.coverImage} onChange={(e) => update("coverImage", e.target.value)} placeholder="/images/..." />
+        <ImageUploadField value={form.coverImage} onChange={(url) => update("coverImage", url)} />
       </div>
 
       <div className="admin-field">
@@ -109,8 +111,8 @@ export default function NewsForm({
       </div>
 
       <div className="admin-field">
-        <label>Nội dung bài viết (hỗ trợ HTML cơ bản)</label>
-        <textarea value={form.contentHtml} onChange={(e) => update("contentHtml", e.target.value)} style={{ minHeight: 220 }} />
+        <label>Nội dung bài viết</label>
+        <RichTextEditor value={form.contentHtml} onChange={(html) => update("contentHtml", html)} />
       </div>
 
       <div className="admin-field" style={{ display: "flex", alignItems: "center", gap: 8 }}>

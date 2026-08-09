@@ -177,3 +177,74 @@
   background: #eee;
   color: #555;
 }
+
+/* Rich text editor */
+.rte-wrap {
+  border: 1px solid var(--admin-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.rte-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px;
+  background: #f5f6f8;
+  border-bottom: 1px solid var(--admin-border);
+}
+.rte-btn {
+  background: #fff;
+  border: 1px solid var(--admin-border);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--admin-text);
+}
+.rte-btn:hover {
+  background: #eef1f3;
+}
+.rte-btn.active {
+  background: var(--admin-primary);
+  color: #fff;
+  border-color: var(--admin-primary);
+}
+.rte-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.rte-content {
+  padding: 12px 14px;
+  min-height: 220px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.rte-content .ProseMirror {
+  outline: none;
+  min-height: 200px;
+}
+.rte-content .ProseMirror p {
+  margin: 0 0 10px;
+}
+.rte-content .ProseMirror h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 16px 0 8px;
+}
+.rte-content .ProseMirror h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 14px 0 6px;
+}
+.rte-content .ProseMirror ul {
+  margin: 0 0 10px 20px;
+}
+.rte-content .ProseMirror img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+.rte-content .ProseMirror a {
+  color: var(--admin-primary);
+  text-decoration: underline;
+}
