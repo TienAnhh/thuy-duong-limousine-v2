@@ -37,13 +37,16 @@ export default async function NewsListPage() {
           ) : (
             <div className="service-grid">
               {posts.map((post) => (
-                <div className="service-card" key={post.slug}>
+                <a className="service-card news-card" key={post.slug} href={`/tin-tuc/${post.slug}`}>
+                  {post.coverImage && (
+                    <div className="news-card-thumb">
+                      <img src={post.coverImage} alt={post.title} />
+                    </div>
+                  )}
                   <h4>{post.title}</h4>
                   {post.excerpt && <p>{post.excerpt}</p>}
-                  <a className="link" href={`/tin-tuc/${post.slug}`}>
-                    Đọc tiếp →
-                  </a>
-                </div>
+                  <span className="link">Đọc tiếp →</span>
+                </a>
               ))}
             </div>
           )}

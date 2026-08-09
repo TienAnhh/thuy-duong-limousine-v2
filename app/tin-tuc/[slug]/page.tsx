@@ -23,7 +23,12 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
       <PreviewBanner />
       <SiteHeader servicePages={navPages} />
 
-      <section className="page-hero">
+      <section className={`page-hero${post.coverImage ? " has-banner" : ""}`}>
+        {post.coverImage && (
+          <div className="page-hero-bg">
+            <img src={post.coverImage} alt={post.title} />
+          </div>
+        )}
         <div className="wrap">
           <div className="breadcrumb">
             <a href="/">Trang chủ</a> <span>/</span> <a href="/tin-tuc">Tin tức</a> <span>/</span>{" "}
@@ -43,9 +48,6 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
       <section>
         <div className="wrap">
           <div className="article-body" style={{ maxWidth: 760 }}>
-            {post.coverImage && (
-              <img src={post.coverImage} alt={post.title} style={{ borderRadius: 8, marginBottom: 24 }} />
-            )}
             {post.contentHtml && <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />}
           </div>
         </div>
