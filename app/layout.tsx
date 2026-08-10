@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Thùy Dương Limousine",
   description: "Xe Limousine Hải Phòng - Hạ Long - Móng Cái",
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || "grVALL0DOY1hsWe-aD-LFddBdTVi3_K9pdCf50PNpwI",
+    google: "n8fA33kEd8aI82UWJ7xHmMedgJGiw_JIR5Hq9YWO2Fg",
   },
 };
 
