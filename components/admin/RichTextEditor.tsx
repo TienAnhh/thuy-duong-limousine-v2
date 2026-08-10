@@ -6,6 +6,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import Link from "@tiptap/extension-link";
 import TextStyle from "@tiptap/extension-text-style";
+import { Color } from "@tiptap/extension-color";
 import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
@@ -32,6 +33,7 @@ export default function RichTextEditor({
       Image.configure({ HTMLAttributes: { style: "max-width:100%;border-radius:8px;" } }),
       Link.configure({ openOnClick: false, autolink: true }),
       TextStyle,
+      Color,
       FontSize,
       Table.configure({ resizable: true }),
       TableRow,
@@ -123,6 +125,21 @@ export default function RichTextEditor({
         {editor.getAttributes("textStyle").fontSize && (
           <button type="button" className="rte-btn" title="Về cỡ chữ mặc định" onClick={() => editor.chain().focus().unsetFontSize().run()}>
             Mặc định
+          </button>
+        )}
+
+        <span className="rte-sep" />
+
+        <label className="rte-color-swatch" title="Màu chữ">
+          <input
+            type="color"
+            value={editor.getAttributes("textStyle").color || "#1c2226"}
+            onChange={(e) => editor.chain().focus().setColor(e.target.value).run()}
+          />
+        </label>
+        {editor.getAttributes("textStyle").color && (
+          <button type="button" className="rte-btn" title="Bỏ màu chữ" onClick={() => editor.chain().focus().unsetColor().run()}>
+            Bỏ màu
           </button>
         )}
 

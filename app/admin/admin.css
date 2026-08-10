@@ -264,6 +264,27 @@
   color: var(--admin-danger);
   border-color: #f3c9c4;
 }
+.rte-color-swatch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--admin-border);
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 3px;
+}
+.rte-color-swatch input[type="color"] {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+}
 .rte-content .ProseMirror table {
   border-collapse: collapse;
   width: 100%;
