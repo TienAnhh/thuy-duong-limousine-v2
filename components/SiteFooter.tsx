@@ -23,6 +23,15 @@ export default function SiteFooter({ servicePages }: { servicePages: NavPage[] }
             <a className="zalo-btn" href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
               💬 Chat Zalo
             </a>
+            <a
+              className="zalo-btn"
+              href="https://www.facebook.com/profile.php?id=61592646196118"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ marginLeft: 10 }}
+            >
+              📘 Fanpage Facebook
+            </a>
           </div>
           <div>
             <h5>Tuyến đường</h5>

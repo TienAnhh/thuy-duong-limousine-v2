@@ -23,6 +23,18 @@ export default function FloatingActions() {
         </span>
         <span className="fab-label">Chat hỗ trợ</span>
       </a>
+      <a
+        className="floating-btn fb"
+        href="https://www.facebook.com/profile.php?id=61592646196118"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Fanpage Facebook"
+      >
+        <span className="fab-circle">
+          <span className="fab-icon">f</span>
+        </span>
+        <span className="fab-label">Fanpage</span>
+      </a>
     </div>
   );
 }
