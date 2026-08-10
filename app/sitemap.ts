@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
-const DOMAIN = process.env.SITE_URL || "https://www.duongthuylimousine.top";
+const DOMAIN = process.env.SITE_URL || "https://www.thuyduonglimousine.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = await prisma.page.findMany({ where: { published: true } });

@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Thùy Dương Limousine",
   description: "Xe Limousine Hải Phòng - Hạ Long - Móng Cái",
+  verification: {
+    google: "n8fA33kEd8aI82UWJ7xHmMedgJGiw_JIR5Hq9YWO2Fg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
