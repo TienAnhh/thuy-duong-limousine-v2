@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { logActivity } from "@/lib/activity";
 
 export const dynamic = "force-dynamic";
 
@@ -24,6 +25,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       sortOrder: data.sortOrder ?? row.sortOrder,
     },
   });
+  await logActivity("update", "price", updated.route);
   return NextResponse.json(updated);
 }
 
@@ -31,5 +33,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
   const row = await prisma.priceRow.findUnique({ where: { id: params.id } });
   if (!row) return NextResponse.json({ error: "Không tìm thấy dòng giá" }, { status: 404 });
   await prisma.priceRow.delete({ where: { id: params.id } });
+  await logActivity("delete", "price", row.route);
   return NextResponse.json({ ok: true });
 }

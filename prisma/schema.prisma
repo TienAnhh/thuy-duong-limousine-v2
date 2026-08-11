@@ -62,6 +62,15 @@ model PriceRow {
   updatedAt DateTime @updatedAt
 }
 
+model ActivityLog {
+  id             String   @id @default(cuid())
+  adminUsername  String
+  action         String   // "create" | "update" | "delete"
+  targetType     String   // "page" | "news" | "price"
+  targetLabel    String
+  createdAt      DateTime @default(now())
+}
+
 model ContactSubmission {
   id        String   @id @default(cuid())
   name      String

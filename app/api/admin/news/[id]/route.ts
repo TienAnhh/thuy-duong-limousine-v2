@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { logActivity } from "@/lib/activity";
 
 export const dynamic = "force-dynamic";
 
@@ -27,6 +28,8 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     },
   });
 
+  await logActivity("update", "news", updated.title);
+
   return NextResponse.json(updated);
 }
 
@@ -35,5 +38,6 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
   if (!post) return NextResponse.json({ error: "Không tìm thấy bài viết" }, { status: 404 });
 
   await prisma.newsPost.delete({ where: { id: params.id } });
+  await logActivity("delete", "news", post.title);
   return NextResponse.json({ ok: true });
 }

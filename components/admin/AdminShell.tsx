@@ -6,7 +6,7 @@ export default async function AdminShell({
   active,
   children,
 }: {
-  active: "dashboard" | "pages" | "prices" | "news" | "contacts" | "accounts";
+  active: "dashboard" | "pages" | "prices" | "news" | "contacts" | "accounts" | "activity";
   children: React.ReactNode;
 }) {
   const session = await getSession();
@@ -63,6 +63,11 @@ export default async function AdminShell({
           {isSuperAdmin && (
             <a href="/admin/accounts" className={active === "accounts" ? "active" : ""}>
               Tài khoản quản trị
+            </a>
+          )}
+          {isSuperAdmin && (
+            <a href="/admin/activity" className={active === "activity" ? "active" : ""}>
+              Nhật ký hoạt động
             </a>
           )}
           <a href="/" target="_blank" rel="noreferrer" style={{ marginTop: 16, color: "var(--admin-muted)" }}>

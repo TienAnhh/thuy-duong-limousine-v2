@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { logActivity } from "@/lib/activity";
 
 export const dynamic = "force-dynamic";
 
@@ -23,5 +24,6 @@ export async function POST(req: NextRequest) {
       sortOrder: data.sortOrder ?? 0,
     },
   });
+  await logActivity("create", "price", row.route);
   return NextResponse.json(row, { status: 201 });
 }
