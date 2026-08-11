@@ -239,7 +239,7 @@ footer ul a:hover{color:var(--gold-light);}
 .floating-btn.call{background:linear-gradient(135deg,#e05a45,var(--rust));}
 .floating-btn.zalo{background:linear-gradient(135deg,#2aa3ff,#0068ff);animation-delay:.3s;}
 .floating-btn.fb{background:linear-gradient(135deg,#1a7cf7,#0d5fd6);animation-delay:.6s;}
-.floating-btn.fb .fab-icon{font-family:Georgia,serif;font-weight:700;font-style:italic;}
+.floating-btn.fb .fab-circle{background:rgba(255,255,255,0.22);}
 .fab-circle{position:relative;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .fab-icon{position:relative;z-index:2;font-size:21px;line-height:1;}
 .fab-icon.zalo-icon{font-family:'Space Grotesk',monospace;font-weight:700;font-size:13px;letter-spacing:0.02em;}

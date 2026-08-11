@@ -31,7 +31,9 @@ export default function FloatingActions() {
         aria-label="Fanpage Facebook"
       >
         <span className="fab-circle">
-          <span className="fab-icon">f</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" aria-hidden="true">
+            <path d="M15.36 4.03h-2.1c-1.68 0-2.83.4-3.55 1.15-.72.76-1.08 1.87-1.08 3.32v1.9H6.5v3.15h2.13V21h3.25v-7.45h2.83l.4-3.15h-3.23V8.7c0-.9.24-1.5.62-1.86.36-.34.98-.5 1.85-.5h1.4V4.03z" />
+          </svg>
         </span>
         <span className="fab-label">Fanpage</span>
       </a>
