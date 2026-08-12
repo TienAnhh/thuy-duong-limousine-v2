@@ -48,18 +48,26 @@ export async function POST(req: NextRequest) {
       withoutEnlargement: true,
     });
 
-    const hasAlpha = metadata.hasAlpha === true;
+    // Nhiều công cụ (Canva, Photoshop...) xuất PNG kèm kênh alpha dù ảnh
+    // không hề có vùng trong suốt thật sự - kiểm tra kỹ để không giữ nhầm PNG
+    let reallyTransparent = false;
+    if (metadata.hasAlpha) {
+      const stats = await sharp(originalBuffer).stats();
+      const alphaChannel = stats.channels[stats.channels.length - 1];
+      reallyTransparent = alphaChannel.min < 255;
+    }
+
     let outputBuffer: Buffer;
     let contentType: string;
     let ext: string;
 
-    if (hasAlpha) {
-      // Có nền trong suốt (vd logo) - giữ định dạng PNG nhưng vẫn nén
+    if (reallyTransparent) {
+      // Có vùng trong suốt thật (vd logo) - giữ PNG nhưng vẫn nén tối đa
       outputBuffer = await pipeline.png({ compressionLevel: 9, adaptiveFiltering: true }).toBuffer();
       contentType = "image/png";
       ext = "png";
     } else {
-      // Ảnh chụp thường - chuyển sang JPEG nén, dung lượng nhỏ hơn nhiều so với PNG/gốc
+      // Không có vùng trong suốt thật - chuyển JPEG, giảm dung lượng mạnh hơn nhiều
       outputBuffer = await pipeline.jpeg({ quality: 82, mozjpeg: true }).toBuffer();
       contentType = "image/jpeg";
       ext = "jpg";
