@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function ContactForm() {
+export default function ContactForm({ defaultRoute = "" }: { defaultRoute?: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -44,7 +44,7 @@ export default function ContactForm() {
         <input name="phone" type="tel" placeholder="Số điện thoại" required />
       </div>
       <div className="form-row full">
-        <input name="route" type="text" placeholder="Tuyến đường muốn đi (VD: Hải Phòng - Móng Cái)" />
+        <input name="route" type="text" defaultValue={defaultRoute} placeholder="Tuyến đường muốn đi (VD: Hải Phòng - Móng Cái)" />
       </div>
       <div className="form-row full">
         <textarea name="note" placeholder="Ghi chú thêm: giờ đón, điểm đón, số lượng khách..." />

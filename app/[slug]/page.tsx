@@ -5,6 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
+import ContactForm from "@/components/ContactForm";
 
 export const dynamic = "force-dynamic";
 
@@ -104,6 +105,51 @@ export default async function DynamicPage({ params }: { params: { slug: string }
               </div>
             )}
           </aside>
+        </div>
+      </section>
+
+      <section id="lien-he" className="bg-cream">
+        <div className="wrap">
+          <div className="contact-wrap">
+            <div className="contact-info">
+              <span className="eyebrow" style={{ color: "var(--gold-light)" }}>
+                Liên hệ
+              </span>
+              <h3>Đặt vé cho tuyến này</h3>
+              <p>Gọi trực tiếp hoặc nhắn Zalo, đội ngũ Thùy Dương Limousine phản hồi trong ít phút.</p>
+              <ul className="contact-list">
+                <li>
+                  <span>📍</span>
+                  <div>
+                    <b>Địa chỉ</b>15 Nguyễn Bỉnh Khiêm, Ka Long, Móng Cái, Quảng Ninh
+                  </div>
+                </li>
+                <li>
+                  <span>☎</span>
+                  <div>
+                    <b>Hotline đặt vé</b>
+                    <a href="tel:0912415045">0912 415 045</a>
+                  </div>
+                </li>
+                <li>
+                  <span>💬</span>
+                  <div>
+                    <b>Zalo</b>
+                    <a href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+                      zalo.me/0912415045
+                    </a>
+                  </div>
+                </li>
+              </ul>
+              <a className="zalo-btn" href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+                💬 Chat Zalo ngay
+              </a>
+            </div>
+            <div className="contact-form">
+              <h4>Gửi yêu cầu đặt xe</h4>
+              <ContactForm defaultRoute={page.navLabel} />
+            </div>
+          </div>
         </div>
       </section>
 
