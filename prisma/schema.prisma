@@ -71,6 +71,15 @@ model ActivityLog {
   createdAt      DateTime @default(now())
 }
 
+model DailyStat {
+  id         String   @id @default(cuid())
+  date       String   @unique // dạng "2026-08-12" theo giờ Việt Nam
+  pageViews  Int      @default(0)
+  callClicks Int      @default(0)
+  zaloClicks Int      @default(0)
+  updatedAt  DateTime @updatedAt
+}
+
 model ContactSubmission {
   id        String   @id @default(cuid())
   name      String
