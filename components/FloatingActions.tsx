@@ -1,5 +1,11 @@
 "use client";
 
+declare global {
+  interface Window {
+    gtag_report_conversion?: (url?: string) => boolean;
+  }
+}
+
 function trackClick(type: "call" | "zalo") {
   try {
     const data = new Blob([JSON.stringify({ type })], { type: "application/json" });
@@ -18,6 +24,11 @@ function trackClick(type: "call" | "zalo") {
   }
 }
 
+function handleCallClick() {
+  trackClick("call");
+  window.gtag_report_conversion?.(); // báo conversion cho Google Ads khi bấm gọi
+}
+
 export default function FloatingActions() {
   return (
     <div className="floating-actions">
@@ -25,7 +36,7 @@ export default function FloatingActions() {
         className="floating-btn call"
         href="tel:0912415045"
         aria-label="Gọi đặt vé 0912 415 045"
-        onClick={() => trackClick("call")}
+        onClick={handleCallClick}
       >
         <span className="fab-circle">
           <span className="pulse-ring"></span>

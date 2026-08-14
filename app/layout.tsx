@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import GoogleAdsTags from "@/components/GoogleAdsTags";
 import PageViewTracker from "@/components/PageViewTracker";
 
 export const metadata: Metadata = {
@@ -23,6 +24,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5L2M8GLK"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <GoogleAdsTags />
         {children}
         <GoogleAnalytics />
         <PageViewTracker />
