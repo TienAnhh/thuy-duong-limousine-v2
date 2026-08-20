@@ -35,17 +35,19 @@ export default async function NewsListPage() {
           {posts.length === 0 ? (
             <p style={{ color: "#5c666c" }}>Chưa có bài viết nào.</p>
           ) : (
-            <div className="service-grid">
+            <div className="news-list">
               {posts.map((post) => (
-                <a className="service-card news-card" key={post.slug} href={`/tin-tuc/${post.slug}`}>
+                <a className="news-list-item" key={post.slug} href={`/tin-tuc/${post.slug}`}>
                   {post.coverImage && (
-                    <div className="news-card-thumb">
+                    <div className="news-list-thumb">
                       <img src={post.coverImage} alt={post.title} />
                     </div>
                   )}
-                  <h4>{post.title}</h4>
-                  {post.excerpt && <p>{post.excerpt}</p>}
-                  <span className="link">Đọc tiếp →</span>
+                  <div className="news-list-content">
+                    <h4>{post.title}</h4>
+                    {post.excerpt && <p>{post.excerpt}</p>}
+                    <span className="link">Đọc tiếp →</span>
+                  </div>
                 </a>
               ))}
             </div>
