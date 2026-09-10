@@ -1,8 +1,23 @@
+"use client";
+
+import { useState } from "react";
+
 type NavPage = { slug: string; navLabel: string; type: string };
 
+const FOOTER_SERVICE_LIMIT = 4;
+
 export default function SiteFooter({ servicePages }: { servicePages: NavPage[] }) {
+  const [showAllServices, setShowAllServices] = useState(false);
+
   const routePages = servicePages.filter((p) => p.type === "route");
   const otherServices = servicePages.filter((p) => p.type === "service");
+
+  const serviceLinks: { href: string; label: string }[] = [
+    ...otherServices.map((p) => ({ href: `/${p.slug}`, label: p.navLabel })),
+    { href: "/tin-tuc", label: "Tin tức" },
+  ];
+  const visibleServiceLinks = showAllServices ? serviceLinks : serviceLinks.slice(0, FOOTER_SERVICE_LIMIT);
+  const hasMoreServices = serviceLinks.length > FOOTER_SERVICE_LIMIT;
 
   return (
     <footer>
@@ -46,15 +61,17 @@ export default function SiteFooter({ servicePages }: { servicePages: NavPage[] }
           <div>
             <h5>Dịch vụ</h5>
             <ul>
-              {otherServices.map((p) => (
-                <li key={p.slug}>
-                  <a href={`/${p.slug}`}>{p.navLabel}</a>
+              {visibleServiceLinks.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href}>{l.label}</a>
                 </li>
               ))}
-              <li>
-                <a href="/tin-tuc">Tin tức</a>
-              </li>
             </ul>
+            {hasMoreServices && (
+              <button type="button" className="footer-more-btn" onClick={() => setShowAllServices((v) => !v)}>
+                {showAllServices ? "Thu gọn ↑" : `Xem thêm (${serviceLinks.length - FOOTER_SERVICE_LIMIT}) ↓`}
+              </button>
+            )}
           </div>
         </div>
         <div className="wrap bottom-bar" style={{ paddingLeft: 0, paddingRight: 0 }}>
