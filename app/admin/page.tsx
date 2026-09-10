@@ -15,7 +15,7 @@ export default async function AdminDashboard() {
       <p className="admin-h1">Tổng quan</p>
       <p className="admin-sub">Xin chào, đây là toàn bộ nội dung đang hoạt động trên website.</p>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+      <div className="admin-stat-grid">
         <a href="/admin/pages" className="admin-card" style={{ textDecoration: "none", color: "inherit" }}>
           <div style={{ fontSize: 28, fontWeight: 700 }}>{pageCount}</div>
           <div style={{ color: "var(--admin-muted)", fontSize: 13.5 }}>Trang nội dung</div>

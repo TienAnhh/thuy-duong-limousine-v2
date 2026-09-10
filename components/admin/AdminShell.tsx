@@ -1,4 +1,5 @@
 import LogoutButton from "./LogoutButton";
+import AdminNav from "./AdminNav";
 import { getSession } from "@/lib/session";
 import { draftMode } from "next/headers";
 
@@ -37,46 +38,14 @@ export default async function AdminShell({
       <div className="admin-topbar">
         <a href="/admin">Thùy Dương Limousine — Quản trị</a>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-          <span style={{ fontSize: 13, opacity: 0.85 }}>{session?.username}</span>
+          <span className="admin-username" style={{ fontSize: 13, opacity: 0.85 }}>
+            {session?.username}
+          </span>
           <LogoutButton />
         </div>
       </div>
       <div className="admin-layout">
-        <nav className="admin-nav">
-          <a href="/admin" className={active === "dashboard" ? "active" : ""}>
-            Tổng quan
-          </a>
-          <a href="/admin/pages" className={active === "pages" ? "active" : ""}>
-            Trang nội dung
-          </a>
-          <a href="/admin/prices" className={active === "prices" ? "active" : ""}>
-            Bảng giá
-          </a>
-          <a href="/admin/news" className={active === "news" ? "active" : ""}>
-            Tin tức
-          </a>
-          <a href="/admin/analytics" className={active === "analytics" ? "active" : ""}>
-            Thống kê truy cập
-          </a>
-          {isSuperAdmin && (
-            <a href="/admin/contacts" className={active === "contacts" ? "active" : ""}>
-              Đăng ký / liên hệ
-            </a>
-          )}
-          {isSuperAdmin && (
-            <a href="/admin/accounts" className={active === "accounts" ? "active" : ""}>
-              Tài khoản quản trị
-            </a>
-          )}
-          {isSuperAdmin && (
-            <a href="/admin/activity" className={active === "activity" ? "active" : ""}>
-              Nhật ký hoạt động
-            </a>
-          )}
-          <a href="/" target="_blank" rel="noreferrer" style={{ marginTop: 16, color: "var(--admin-muted)" }}>
-            ↗ Xem trang web
-          </a>
-        </nav>
+        <AdminNav active={active} isSuperAdmin={isSuperAdmin} />
         <main className="admin-main">{children}</main>
       </div>
     </>

@@ -37,21 +37,21 @@ export default async function AdminAnalyticsPage({
       <p className="admin-h1">Thống kê truy cập</p>
 
       <div style={{ marginBottom: 10, fontWeight: 600, color: "var(--admin-text)" }}>Hôm nay</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 28 }}>
+      <div className="admin-stat-grid" style={{ marginBottom: 28 }}>
         <StatCard title="Lượt xem trang" value={today.pageViews} />
         <StatCard title="Click gọi điện" value={today.callClicks} />
         <StatCard title="Click Zalo" value={today.zaloClicks} />
       </div>
 
       <div style={{ marginBottom: 10, fontWeight: 600, color: "var(--admin-text)" }}>Hôm qua</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 28 }}>
+      <div className="admin-stat-grid" style={{ marginBottom: 28 }}>
         <StatCard title="Lượt xem trang" value={yesterday.pageViews} />
         <StatCard title="Click gọi điện" value={yesterday.callClicks} />
         <StatCard title="Click Zalo" value={yesterday.zaloClicks} />
       </div>
 
       <div style={{ marginBottom: 10, fontWeight: 600, color: "var(--admin-text)" }}>Tổng từ trước đến nay</div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 28 }}>
+      <div className="admin-stat-grid" style={{ marginBottom: 28 }}>
         <StatCard title="Lượt xem trang" value={allTime.pageViews} />
         <StatCard title="Click gọi điện" value={allTime.callClicks} />
         <StatCard title="Click Zalo" value={allTime.zaloClicks} />
@@ -72,7 +72,7 @@ export default async function AdminAnalyticsPage({
         </button>
       </form>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 20 }}>
+      <div className="admin-stat-grid" style={{ marginBottom: 20 }}>
         <StatCard title="Lượt xem trang (trong khoảng)" value={range.totals.pageViews} />
         <StatCard title="Click gọi điện (trong khoảng)" value={range.totals.callClicks} />
         <StatCard title="Click Zalo (trong khoảng)" value={range.totals.zaloClicks} />
