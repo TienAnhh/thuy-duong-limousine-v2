@@ -83,46 +83,6 @@
   margin: 12px 12px 0;
 }
 
-@media (max-width: 860px) {
-  .admin-layout {
-    flex-direction: column;
-  }
-  .admin-topbar {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .admin-username {
-    display: none;
-  }
-  .admin-nav-burger {
-    display: block;
-  }
-  .admin-nav {
-    display: none;
-    width: auto;
-    padding: 8px 12px 16px;
-  }
-  .admin-nav.open {
-    display: flex;
-  }
-  .admin-main {
-    padding: 16px;
-  }
-  .admin-stat-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .admin-table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .admin-stat-grid {
-    grid-template-columns: 1fr;
-  }
-}
 .admin-card {
   background: #fff;
   border: 1px solid var(--admin-border);
@@ -366,4 +326,55 @@
 }
 .rte-content .ProseMirror table .selectedCell {
   background: rgba(31, 111, 120, 0.12);
+}
+
+@media (max-width: 860px) {
+  .admin-layout {
+    flex-direction: column;
+  }
+  .admin-topbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .admin-username {
+    display: none;
+  }
+  .admin-nav-burger {
+    display: block;
+  }
+  .admin-nav {
+    display: none;
+    width: auto;
+    padding: 8px 12px 16px;
+  }
+  .admin-nav.open {
+    display: flex;
+    flex-direction: column;
+  }
+  .admin-main {
+    padding: 16px;
+  }
+  .admin-stat-grid {
+    gap: 8px;
+  }
+  .admin-card {
+    padding: 12px 10px;
+  }
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-stat-grid > .admin-card > div:first-child {
+    font-size: 19px !important;
+  }
+  .admin-stat-grid > .admin-card > div:last-child {
+    font-size: 11px !important;
+  }
+  .admin-card {
+    padding: 10px 6px;
+  }
 }
