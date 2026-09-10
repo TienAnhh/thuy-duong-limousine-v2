@@ -6,6 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
 import ContactForm from "@/components/ContactForm";
+import ServiceGridPaginated from "@/components/ServiceGridPaginated";
 
 export const dynamic = "force-dynamic";
 
@@ -253,18 +254,7 @@ export default async function HomePage() {
             <span className="eyebrow">Dịch vụ</span>
             <h2 style={{ color: "var(--navy)" }}>Ngoài chở khách, chúng tôi còn hỗ trợ</h2>
           </div>
-          <div className="service-grid">
-            {servicePages.map((s) => (
-              <div className="service-card" key={s.slug}>
-                {s.icon && <div className="icon">{s.icon}</div>}
-                <h4>{s.navLabel}</h4>
-                <p>{s.metaDescription || s.h1}</p>
-                <a className="link" href={`/${s.slug}`}>
-                  Xem chi tiết →
-                </a>
-              </div>
-            ))}
-          </div>
+          <ServiceGridPaginated services={servicePages} />
         </div>
       </section>
 
