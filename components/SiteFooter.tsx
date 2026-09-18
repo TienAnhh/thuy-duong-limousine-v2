@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CallLink, ZaloLink } from "@/components/TrackedLinks";
 
 type NavPage = { slug: string; navLabel: string; type: string };
 
@@ -35,9 +36,9 @@ export default function SiteFooter({ servicePages }: { servicePages: NavPage[] }
               Xe Limousine tuyến Hải Phòng - Hạ Long - Móng Cái, đón trả tận nơi, chạy liên tục từ 4h30 đến 19h
               hằng ngày.
             </p>
-            <a className="zalo-btn" href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+            <ZaloLink className="zalo-btn">
               💬 Chat Zalo
-            </a>
+            </ZaloLink>
             <a
               className="zalo-btn"
               href="https://www.facebook.com/profile.php?id=61592646196118"
@@ -77,7 +78,7 @@ export default function SiteFooter({ servicePages }: { servicePages: NavPage[] }
         <div className="wrap bottom-bar" style={{ paddingLeft: 0, paddingRight: 0 }}>
           <span>© {new Date().getFullYear()} Thùy Dương Limousine. Bảo lưu mọi quyền.</span>
           <span>
-            15 Nguyễn Bỉnh Khiêm, Ka Long, Móng Cái · <a href="tel:0912415045">0912 415 045</a>
+            15 Nguyễn Bỉnh Khiêm, Ka Long, Móng Cái · <CallLink>0912 415 045</CallLink>
           </span>
         </div>
       </div>

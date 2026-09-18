@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { CallLink, ZaloLink } from "@/components/TrackedLinks";
 
 type NavPage = { slug: string; navLabel: string; type: string };
 
@@ -39,11 +40,11 @@ export default function SiteHeader({ servicePages }: { servicePages: NavPage[] }
             <span>15 Nguyễn Bỉnh Khiêm, Ka Long, Móng Cái, Quảng Ninh</span>
           </div>
           <div>
-            <a href="tel:0912415045">Hotline: 0912 415 045</a>
+            <CallLink>Hotline: 0912 415 045</CallLink>
             <span className="divider">|</span>
-            <a href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+            <ZaloLink>
               Zalo đặt vé
-            </a>
+            </ZaloLink>
           </div>
         </div>
       </div>
@@ -89,9 +90,9 @@ export default function SiteHeader({ servicePages }: { servicePages: NavPage[] }
             <a className="cta-btn ghost" href="/#bang-gia">
               Xem bảng giá
             </a>
-            <a className="cta-btn" href="tel:0912415045">
+            <CallLink className="cta-btn">
               Gọi ngay
-            </a>
+            </CallLink>
             <button
               className="burger"
               aria-label="Mở menu"

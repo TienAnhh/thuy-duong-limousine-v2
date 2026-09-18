@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
+import { CallLink } from "@/components/TrackedLinks";
 
 export const dynamic = "force-dynamic";
 
@@ -73,9 +74,9 @@ export default async function NewsDetailPage({ params }: { params: { slug: strin
                   <b>Địa chỉ:</b> 15 Nguyễn Bỉnh Khiêm, Ka Long, Móng Cái
                 </li>
               </ul>
-              <a className="cta-btn" style={{ width: "100%", justifyContent: "center" }} href="tel:0912415045">
+              <CallLink className="cta-btn" style={{ width: "100%", justifyContent: "center" }}>
                 ☎ Gọi đặt vé ngay
-              </a>
+              </CallLink>
             </div>
 
             {otherPosts.length > 0 && (

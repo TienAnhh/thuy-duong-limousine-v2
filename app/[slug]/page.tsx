@@ -6,6 +6,7 @@ import SiteFooter from "@/components/SiteFooter";
 import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
 import ContactForm from "@/components/ContactForm";
+import { CallLink, ZaloLink } from "@/components/TrackedLinks";
 
 export const dynamic = "force-dynamic";
 
@@ -46,12 +47,12 @@ export default async function DynamicPage({ params }: { params: { slug: string }
           <h1>{page.h1}</h1>
           {page.metaDescription && <p className="lede">{page.metaDescription}</p>}
           <div className="hero-ctas" style={{ marginTop: 24 }}>
-            <a className="cta-btn" href="tel:0912415045">
+            <CallLink className="cta-btn">
               ☎ Đặt vé: 0912 415 045
-            </a>
-            <a className="cta-btn ghost" href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+            </CallLink>
+            <ZaloLink className="cta-btn ghost">
               Chat Zalo
-            </a>
+            </ZaloLink>
           </div>
         </div>
       </section>
@@ -87,9 +88,9 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                   <b>Đón trả:</b> tận nơi theo yêu cầu
                 </li>
               </ul>
-              <a className="cta-btn" style={{ width: "100%", justifyContent: "center" }} href="tel:0912415045">
+              <CallLink className="cta-btn" style={{ width: "100%", justifyContent: "center" }}>
                 ☎ Gọi đặt vé ngay
-              </a>
+              </CallLink>
             </div>
 
             {relatedPages.length > 0 && (
@@ -128,22 +129,22 @@ export default async function DynamicPage({ params }: { params: { slug: string }
                   <span>☎</span>
                   <div>
                     <b>Hotline đặt vé</b>
-                    <a href="tel:0912415045">0912 415 045</a>
+                    <CallLink>0912 415 045</CallLink>
                   </div>
                 </li>
                 <li>
                   <span>💬</span>
                   <div>
                     <b>Zalo</b>
-                    <a href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+                    <ZaloLink>
                       zalo.me/0912415045
-                    </a>
+                    </ZaloLink>
                   </div>
                 </li>
               </ul>
-              <a className="zalo-btn" href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+              <ZaloLink className="zalo-btn">
                 💬 Chat Zalo ngay
-              </a>
+              </ZaloLink>
             </div>
             <div className="contact-form">
               <h4>Gửi yêu cầu đặt xe</h4>

@@ -7,6 +7,7 @@ import PreviewBanner from "@/components/PreviewBanner";
 import FloatingActions from "@/components/FloatingActions";
 import ContactForm from "@/components/ContactForm";
 import ServiceGridPaginated from "@/components/ServiceGridPaginated";
+import { CallLink, ZaloLink } from "@/components/TrackedLinks";
 
 export const dynamic = "force-dynamic";
 
@@ -52,9 +53,9 @@ export default async function HomePage() {
           <h1>{h1}</h1>
           <p className="lede">{lede}</p>
           <div className="hero-ctas">
-            <a className="cta-btn" href="tel:0912415045">
+            <CallLink className="cta-btn">
               ☎ Đặt vé: 0912 415 045
-            </a>
+            </CallLink>
             <a className="cta-btn ghost" href="#bang-gia">
               Xem bảng giá
             </a>
@@ -158,9 +159,9 @@ export default async function HomePage() {
                     </span>
                   </div>
                 )}
-                <a className="rc-link" href="tel:0912415045">
+                <CallLink className="rc-link">
                   ☎ Gọi đặt vé ngay →
-                </a>
+                </CallLink>
               </div>
             ))}
           </div>
@@ -278,22 +279,22 @@ export default async function HomePage() {
                   <span>☎</span>
                   <div>
                     <b>Hotline đặt vé</b>
-                    <a href="tel:0912415045">0912 415 045</a>
+                    <CallLink>0912 415 045</CallLink>
                   </div>
                 </li>
                 <li>
                   <span>💬</span>
                   <div>
                     <b>Zalo</b>
-                    <a href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+                    <ZaloLink>
                       zalo.me/0912415045
-                    </a>
+                    </ZaloLink>
                   </div>
                 </li>
               </ul>
-              <a className="zalo-btn" href="https://zalo.me/0912415045" target="_blank" rel="noopener noreferrer">
+              <ZaloLink className="zalo-btn">
                 💬 Chat Zalo ngay
-              </a>
+              </ZaloLink>
             </div>
             <div className="contact-form">
               <h4>Gửi yêu cầu đặt xe</h4>
