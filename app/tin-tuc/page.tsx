@@ -4,15 +4,28 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import FloatingActions from "@/components/FloatingActions";
 
-export const dynamic = "force-dynamic";
+// Cache trang danh sách 60 giây thay vì query DB ở mọi lượt truy cập.
+// Khi admin đăng/sửa/xóa bài, revalidatePath("/tin-tuc") sẽ làm mới ngay lập tức,
+// nên con số 60s chỉ là "lưới an toàn" phòng khi revalidatePath không chạy.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Tin tức | Thùy Dương Limousine",
   description: "Tin tức, thông báo lịch chạy và cập nhật mới từ Thùy Dương Limousine.",
 };
 
-export default async function NewsListPage() {
-  const [posts, navPages] = await Promise.all([getPublishedNews(), getNavPages()]);
+export default async function NewsListPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
+  const rawPage = Array.isArray(searchParams.page) ? searchParams.page[0] : searchParams.page;
+  const page = Math.max(1, parseInt(rawPage ?? "1", 10) || 1);
+
+  const [{ posts, totalPages }, navPages] = await Promise.all([
+    getPublishedNews(page),
+    getNavPages(),
+  ]);
 
   return (
     <>
@@ -50,6 +63,27 @@ export default async function NewsListPage() {
                   </div>
                 </a>
               ))}
+            </div>
+          )}
+
+          {totalPages > 1 && (
+            <div
+              className="news-pagination"
+              style={{ display: "flex", justifyContent: "center", gap: 12, marginTop: 32 }}
+            >
+              {page > 1 && (
+                <a className="cta-btn" href={page - 1 === 1 ? "/tin-tuc" : `/tin-tuc?page=${page - 1}`}>
+                  ← Trang trước
+                </a>
+              )}
+              <span style={{ alignSelf: "center", color: "#5c666c" }}>
+                Trang {page}/{totalPages}
+              </span>
+              {page < totalPages && (
+                <a className="cta-btn" href={`/tin-tuc?page=${page + 1}`}>
+                  Trang sau →
+                </a>
+              )}
             </div>
           )}
         </div>

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { logActivity } from "@/lib/activity";
 
@@ -29,6 +30,8 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
   });
 
   await logActivity("update", "news", updated.title);
+  revalidatePath("/tin-tuc");
+  revalidatePath(`/tin-tuc/${updated.slug}`);
 
   return NextResponse.json(updated);
 }
@@ -39,5 +42,7 @@ export async function DELETE(_req: NextRequest, { params }: { params: { id: stri
 
   await prisma.newsPost.delete({ where: { id: params.id } });
   await logActivity("delete", "news", post.title);
+  revalidatePath("/tin-tuc");
+  revalidatePath(`/tin-tuc/${post.slug}`);
   return NextResponse.json({ ok: true });
 }

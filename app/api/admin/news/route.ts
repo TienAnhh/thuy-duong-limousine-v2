@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
 import { logActivity } from "@/lib/activity";
 
@@ -42,6 +43,7 @@ export async function POST(req: NextRequest) {
   });
 
   await logActivity("create", "news", post.title);
+  revalidatePath("/tin-tuc");
 
   return NextResponse.json(post, { status: 201 });
 }

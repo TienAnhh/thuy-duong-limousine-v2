@@ -1,13 +1,19 @@
 import { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 3600; // sitemap không cần cập nhật theo thời gian thực
 
 const DOMAIN = process.env.SITE_URL || "https://www.thuyduonglimousine.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages = await prisma.page.findMany({ where: { published: true } });
-  const posts = await prisma.newsPost.findMany({ where: { published: true } });
+  const pages = await prisma.page.findMany({
+    where: { published: true },
+    select: { slug: true, updatedAt: true },
+  });
+  const posts = await prisma.newsPost.findMany({
+    where: { published: true },
+    select: { slug: true, updatedAt: true },
+  });
 
   const pageEntries: MetadataRoute.Sitemap = pages.map((p) => ({
     url: p.slug === "home" ? DOMAIN : `${DOMAIN}/${p.slug}`,
